@@ -8,6 +8,7 @@ const db = require("./config/mongo");
 
 // Routers import
 const userRouter = require("./components/users/api");
+const taskRouter = require("./components/tasks/api");
 
 const app = express();
 const port = 3000;
@@ -21,6 +22,7 @@ app.use(cors());
 
 // Routes setup
 app.use("/auth", userRouter);
+app.use("/users/:userId/tasks", taskRouter);
 
 app.get("/", (req, res) => {
   res.send("Hello World!");

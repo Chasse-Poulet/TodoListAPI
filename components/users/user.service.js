@@ -12,8 +12,8 @@ async function getUserByEmail(email) {
   return User.findOne({ email });
 }
 
-async function signup(properties) {
-  const user = new User({ ...properties });
+async function signup(userData) {
+  const user = new User(userData);
   return user.save();
 }
 
@@ -21,12 +21,10 @@ async function deleteUser(id) {
   return await User.findByIdAndDelete(id);
 }
 
-const UserService = {
+module.exports = {
   getAllUsers,
   getUserById,
   getUserByEmail,
   signup,
   deleteUser,
 };
-
-module.exports = UserService;

@@ -73,7 +73,7 @@ router
 
     res.json(user);
   })
-  .delete(async (req, res) => {
+  .delete(auth, async (req, res) => {
     const userId = req.params.userId;
     const user = await UserService.deleteUser(userId);
 
