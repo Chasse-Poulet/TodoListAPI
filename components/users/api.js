@@ -61,9 +61,9 @@ router.post("/login", async (req, res) => {
 });
 
 router
-  .route("/:id")
+  .route("/:userId")
   .get(auth, async (req, res) => {
-    const userId = req.params.id;
+    const userId = req.params.userId;
     const user = await UserService.getUserById(userId);
 
     if (!user) {
@@ -74,7 +74,7 @@ router
     res.json(user);
   })
   .delete(async (req, res) => {
-    const userId = req.params.id;
+    const userId = req.params.userId;
     const user = await UserService.deleteUser(userId);
 
     if (!user) {
